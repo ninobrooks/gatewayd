@@ -2,11 +2,10 @@ var gateway = require(__dirname+'/../');
 
 var listener = require(__dirname+'/../lib/ripple/listener.js');
 
-
-var listener = new Listener({
-  address: gateway.config.get('COLD_WALLET'),
-  startHash: gateway.config.get('LAST_PAYMENT_HASH')
-});
+//var listener = new Listener({
+//  address: gateway.config.get('COLD_WALLET'),
+//  startHash: gateway.config.get('LAST_PAYMENT_HASH')
+//});
 
 
 //listener.vent.on("payment", function(payment) {
@@ -40,7 +39,7 @@ var listener = new Listener({
 //  };
 //});
 
-listener.start();
+listener.listen();
 
 
 listener.listen()
