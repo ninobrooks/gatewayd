@@ -25,7 +25,7 @@ describe('set configuration profile', function(){
             ripple_rest_url: 'http://localhost:5990/v1',
             ripple_address: 'rMinhWxZz4jeHoJGyddtmwg6dWhyqQKtJz',
             currencies: {
-              XAG: 0
+              SWD: 0
             }
           }
         }
@@ -45,7 +45,7 @@ describe('set configuration profile', function(){
           ripple_rest_url: 'https://localhost:5990/v1',
           ripple_address: 'somerippleaddress',
           currencies: {
-            XAG: 110
+            SWD: 110
           }
         }
       }
@@ -109,7 +109,7 @@ describe('set configuration profile', function(){
           postgres_url: 'postgres://postgres:password@localhost:5432/ripple_gateway',
           ripple_address: 'rMinhWxZz4jeHoJGyddtmwg6dWhyqQKtJz',
           currencies: {
-            XAG: 110
+            SWD: 110
           }
         }
       }
@@ -189,6 +189,29 @@ describe('set configuration profile', function(){
     .end(function(err, res){
       assert(findError(res.body.errors, 'invalid_ripple_address'));
       assert(findError(res.body.errors, 'invalid_ripple_address').message == 'please provide a valid ripple_address');
+      if (err) throw err;
+      done();
+    });
+  });
+
+  it('should return error with an invalid currency trust amount', function(done){
+    request(app)
+      .post('/v1/config/wizard')
+      .send( {
+        config: {
+          postgres_url: 'postgres://postgres:password@localhost:5432/ripple_gateway',
+          ripple_rest_url: 'http://localhost:5990/v1',
+          ripple_address: 'rMinhWxZz4jeHoJGyddtmwg6dWhyqQKtJz',
+          currencies: {
+            SWD: 'NaN'
+          }
+        }
+      }
+    )
+    .expect(400)
+    .end(function(err, res){
+      assert(findError(res.body.errors, 'invalid_currency_trust'));
+      assert(findError(res.body.errors, 'invalid_currency_trust').message == 'please provide a valid currency trust amount');
       if (err) throw err;
       done();
     });
