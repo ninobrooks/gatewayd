@@ -37,7 +37,6 @@ describe('set configuration profile', function(){
       });
   });
 
-
   it('should return error with no database_url', function(done){
     request(app)
       .post('/v1/config/wizard')
