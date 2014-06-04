@@ -20,7 +20,7 @@
     "ripple-wallet": "1.0.0",
     "require-all": "",
     "ripple-gateway-webapp-example": "1.6.1",
-    "ripple-rest-client": "1.4.0",
+    "ripple-rest-client": "1.5.0",
     "node-uuid": "1.4.1",
     "ejs": "",
     "cli-table": "0.3.0",
