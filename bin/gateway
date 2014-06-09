@@ -268,5 +268,10 @@ program
   .description('retry an outgoing ripple transaction that failed')
   .action(cli.retryFailedPayment);
 
+program
+  .command('setup')
+  .description('run the setup wizard using the current configuration')
+  .action(cli.setup);
+
 program.parse(process.argv);
 
