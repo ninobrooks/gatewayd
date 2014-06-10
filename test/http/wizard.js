@@ -18,12 +18,13 @@ describe('set configuration profile', function(){
 
   it('should return successfully with valid configuration', function(done){
     request(app)
-      .post('/v1/config/wizard')
+      .post('/v1/setup')
       .send( {
           config: {
             database_url: 'postgres://postgres:password@localhost:5432/ripple_gateway',
             ripple_rest_url: 'http://localhost:5990/v1',
             ripple_address: 'rMinhWxZz4jeHoJGyddtmwg6dWhyqQKtJz',
+            cold_wallet_secret: 'sp1RTbeq9djvXFyGfmS2v3XMKcgVa',
             currencies: {
               SWD: 0
             }
@@ -32,6 +33,8 @@ describe('set configuration profile', function(){
       )
       .expect(200)
       .end(function(err, res){
+        console.log('wiz-err', err);
+        console.log('wiz', res.body);
         if (err) throw err;
         done();
       });
@@ -39,7 +42,7 @@ describe('set configuration profile', function(){
 
   it('should return error with no database_url', function(done){
     request(app)
-      .post('/v1/config/wizard')
+      .post('/v1/setup')
       .send( {
         config: {
           ripple_rest_url: 'https://localhost:5990/v1',
@@ -61,7 +64,7 @@ describe('set configuration profile', function(){
 
   it('should return error with no currencies', function(done){
     request(app)
-      .post('/v1/config/wizard')
+      .post('/v1/setup')
       .send( {
         config: {
           database_url: 'postgres://postgres:password@localhost:5432/ripple_gateway',
@@ -82,7 +85,7 @@ describe('set configuration profile', function(){
 
   it('should return error with no ripple_address', function(done){
     request(app)
-      .post('/v1/config/wizard')
+      .post('/v1/setup')
       .send( {
         config: {
           database_url: 'postgres://postgres:password@localhost:5432/ripple_gateway',
@@ -103,7 +106,7 @@ describe('set configuration profile', function(){
 
   it('should return error with no database_url', function(done){
     request(app)
-      .post('/v1/config/wizard')
+      .post('/v1/setup')
       .send( {
         config: {
           database_url: 'postgres://postgres:password@localhost:5432/ripple_gateway',
@@ -127,7 +130,7 @@ describe('set configuration profile', function(){
 
   it('should return error with an invalid database_url', function(done){
     request(app)
-      .post('/v1/config/wizard')
+      .post('/v1/setup')
       .send( {
         config: {
           database_url: 'invalidPostgresUrl',
@@ -150,7 +153,7 @@ describe('set configuration profile', function(){
 
   it('should return error with an invalid ripple_rest_url', function(done){
     request(app)
-      .post('/v1/config/wizard')
+      .post('/v1/setup')
       .send( {
         config: {
           database_url: 'postgres://postgres:password@localhost:5432/ripple_gateway',
@@ -173,7 +176,7 @@ describe('set configuration profile', function(){
 
   it('should return error with an invalid ripple_address', function(done){
     request(app)
-      .post('/v1/config/wizard')
+      .post('/v1/setup')
       .send( {
         config: {
           database_url: 'postgres://postgres:password@localhost:5432/ripple_gateway',
@@ -196,7 +199,7 @@ describe('set configuration profile', function(){
 
   it('should return error with an invalid currency trust amount', function(done){
     request(app)
-      .post('/v1/config/wizard')
+      .post('/v1/setup')
       .send( {
         config: {
           database_url: 'postgres://postgres:password@localhost:5432/ripple_gateway',
