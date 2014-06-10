@@ -16,8 +16,8 @@ nconf.defaults({
   'HTTP_SERVER': true, // Serve http/json api
   'BASIC_AUTH': true, // Require admin key for http api
   'KEY': false, // Required for BASIC_AUTH
-  'USER_AUTH': false, // Enable user routes with name/password basic auth
-  'WEBAPP': false,
+  'USER_AUTH': true, // Enable user routes with name/password basic auth
+  'WEBAPP': true,
   'WEBAPP_PATH': __dirname+"/../node_modules/ripple-gateway-webapp-example/",
   'PORT': 5000, // Port of http api server
   'HOST': 'localhost',
