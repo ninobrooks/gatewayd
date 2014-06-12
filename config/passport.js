@@ -9,18 +9,18 @@ function init(adapter) {
     function(username, password, done) {
       if (username == 'admin') {
         if (password && (password == nconf.get('KEY'))) {
-          return done(null, { admin: true }); 
+          return done(null, { admin: true });
         } else {
           return done('Invalid admin key');
         }
       } else {
-        adapter.users.read({ name: username }, function(err, user) { 
+        adapter.users.read({ name: username }, function(err, user) {
           if (err) {
-            return done(err) 
+            return done(err);
           }
-          if (user) { 
-            if (!utils.verifyPassword(password, user.salt, user.password_hash)) { 
-              return done(null, false) 
+          if (user) {
+            if (!utils.verifyPassword(password, user.salt, user.password_hash)) {
+              return done(null, false);
             }
             return done(null, user);
           } else {
