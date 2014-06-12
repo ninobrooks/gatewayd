@@ -22,7 +22,7 @@ describe('set configuration profile', function(){
       .send( {
           config: {
             database_url: 'postgres://postgres:password@localhost:5432/ripple_gateway',
-            ripple_rest_url: 'http://localhost:5990/v1',
+            ripple_rest_url: 'http://localhost:5990/',
             ripple_address: 'rMinhWxZz4jeHoJGyddtmwg6dWhyqQKtJz',
             cold_wallet_secret: 'sp1RTbeq9djvXFyGfmS2v3XMKcgVa',
             currencies: {
@@ -33,8 +33,6 @@ describe('set configuration profile', function(){
       )
       .expect(200)
       .end(function(err, res){
-        console.log('wiz-err', err);
-        console.log('wiz', res.body);
         if (err) throw err;
         done();
       });
