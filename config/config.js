@@ -18,7 +18,7 @@ nconf.defaults({
   'KEY': false, // Required for BASIC_AUTH
   'USER_AUTH': true, // Enable user routes with name/password basic auth
   'WEBAPP': true,
-  'WEBAPP_PATH': "/Users/abiy/code/ripple-gateway-webapp-example/",
+  'WEBAPP_PATH': __dirname+"/../node_modules/ripple-gateway-webapp-example/",
   'PORT': 5000, // Port of http api server
   'HOST': 'localhost',
   'DOMAIN': 'example.com', // Domain of gateway, for ripple.txt and auth
