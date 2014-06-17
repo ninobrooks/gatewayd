@@ -42,4 +42,41 @@ describe('update account settings', function(){
 
   });
 
+  it('should successfully set trustline b/n cold and hot wallet for currency and amount', function(done){
+    this.timeout(10000);
+    var opts = {
+      currencies: {
+        "XAW": 10
+      }
+    };
+
+    wizard._setTrustLine(opts, function(err, response){
+      if (err) {
+        console.log('_setTrustLine err', err);
+      } else {
+        console.log('_setTrustLine success', response);
+      }
+      done();
+    });
+  });
+
+  it('should successfuly add a single or multiple currencies', function(done){
+    this.timeout(10000);
+    var opts = {
+      cold_wallet_secret: 'sp1RTbeq9djvXFyGfmS2v3XMKcgVa',
+      amount: 10,
+      currency: 'XAW',
+      destination_tag: 0
+    };
+
+    wizard._issueCurrency(opts, function(err, response){
+      if (err) {
+        console.log('_issueCurrency err', err);
+      } else {
+        console.log('_issueCurrency success', response);
+      }
+      done();
+    });
+  });
+
 });
