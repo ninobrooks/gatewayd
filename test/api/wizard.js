@@ -1,7 +1,7 @@
 var Wizard = require(__dirname+'/../../lib/wizard.js');
 var Client = require('ripple-rest-client');
 
-describe('update account settings', function(){
+describe('Wizard setup', function(){
   var wizard;
   before(function(){
     wizard = new Wizard();
@@ -10,7 +10,7 @@ describe('update account settings', function(){
   it('should successfully account settings to', function(done){
     var opts = {
       ripple_address: 'rMinhWxZz4jeHoJGyddtmwg6dWhyqQKtJz',
-      cold_wallet_secret: 'sp1RTbeq9djvXFyGfmS2v3XMKcgVa'
+      cold_wallet_secret: '<secret>'
     };
 
     wizard._updateAccountSettings(opts, function(err, response){
@@ -60,16 +60,42 @@ describe('update account settings', function(){
     });
   });
 
-  it('should successfuly add a single or multiple currencies', function(done){
-    this.timeout(10000);
+  it('should successfully add a single or multiple currencies', function(done){
+    this.timeout(30000);
     var opts = {
-      cold_wallet_secret: 'sp1RTbeq9djvXFyGfmS2v3XMKcgVa',
-      amount: 10,
-      currency: 'XAW',
-      destination_tag: 0
+      secret: '<secret>',
+      destination_tag: 0,
+      currencies : {
+        'SWG': 1,
+        'XAW': 1,
+        'CAT': 22
+      }
     };
 
-    wizard._issueCurrency(opts, function(err, response){
+    wizard._addCurrency(opts, function(err, response){
+      if (err) {
+        console.log('_addCurrency err', err);
+      } else {
+        console.log('_addCurrency success', response);
+      }
+      done();
+    });
+  });
+
+  it('should successfully issue a single or multiple currencies', function(done){
+    this.timeout(10000);
+    var opts = {
+      secret: '<secret>',
+      amount: 10,
+      currency: 'XAW',
+      destination_tag: 0,
+      currencies : {
+        'SWG': 1,
+        'XAW': 1
+      }
+    };
+
+    wizard._issueCurrencies(opts, function(err, response){
       if (err) {
         console.log('_issueCurrency err', err);
       } else {
