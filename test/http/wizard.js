@@ -31,6 +31,7 @@ describe('set configuration profile', function(){
           }
         }
       )
+      .auth('admin@'+gateway.config.get('DOMAIN'), gateway.config.get('KEY'))
       .expect(200)
       .end(function(err, res){
         if (err) throw err;
@@ -51,6 +52,7 @@ describe('set configuration profile', function(){
         }
       }
     )
+      .auth('admin@'+gateway.config.get('DOMAIN'), gateway.config.get('KEY'))
       .expect(400)
       .end(function(err, res){
         assert(findError(res.body.errors, 'database_url'));
@@ -71,6 +73,7 @@ describe('set configuration profile', function(){
         }
       }
     )
+    .auth('admin@'+gateway.config.get('DOMAIN'), gateway.config.get('KEY'))
     .expect(400)
     .end(function(err, res){
       assert(findError(res.body.errors, 'currencies'));
@@ -91,6 +94,7 @@ describe('set configuration profile', function(){
         }
       }
     )
+    .auth('admin@'+gateway.config.get('DOMAIN'), gateway.config.get('KEY'))
     .expect(400)
     .end(function(err, res){
       assert(findError(res.body.errors, 'currencies'));
@@ -115,6 +119,7 @@ describe('set configuration profile', function(){
         }
       }
     )
+    .auth('admin@'+gateway.config.get('DOMAIN'), gateway.config.get('KEY'))
     .expect(400)
     .end(function(err, res){
       assert(findError(res.body.errors, 'ripple_rest_url'));
@@ -140,6 +145,7 @@ describe('set configuration profile', function(){
         }
       }
     )
+    .auth('admin@'+gateway.config.get('DOMAIN'), gateway.config.get('KEY'))
     .expect(400)
     .end(function(err, res){
       assert(findError(res.body.errors, 'database_url'));
@@ -163,6 +169,7 @@ describe('set configuration profile', function(){
         }
       }
     )
+    .auth('admin@'+gateway.config.get('DOMAIN'), gateway.config.get('KEY'))
     .expect(400)
     .end(function(err, res){
       assert(findError(res.body.errors, 'ripple_rest_url'));
@@ -186,6 +193,7 @@ describe('set configuration profile', function(){
         }
       }
     )
+      .auth('admin@'+gateway.config.get('DOMAIN'), gateway.config.get('KEY'))
     .expect(400)
     .end(function(err, res){
       assert(findError(res.body.errors, 'ripple_address'));
@@ -209,6 +217,7 @@ describe('set configuration profile', function(){
         }
       }
     )
+    .auth('admin@'+gateway.config.get('DOMAIN'), gateway.config.get('KEY'))
     .expect(400)
     .end(function(err, res){
       assert(findError(res.body.errors, 'currency_limit'));
