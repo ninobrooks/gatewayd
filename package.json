@@ -45,7 +45,8 @@
     "validator": "^3.11.0",
     "winston": "^0.7.3",
     "superagent": "^0.18.0",
-    "winston-loggly": "^1.0.1"
+    "winston-loggly": "^1.0.1",
+    "stripe-gatewayd-inbound-bridge-plugin": "^0.1.2"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "^0.10.0",
