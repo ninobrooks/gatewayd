@@ -10,3 +10,4 @@ lib/data/database.json
 logfile
 env/deploy/config.json
 logs/*.log
+Gatewaydfile.js
