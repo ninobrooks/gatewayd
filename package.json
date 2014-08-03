@@ -1,5 +1,5 @@
 {
-  "name": "ripple-gateway",
+  "name": "gatewayd",
   "version": "3.23.1",
   "scripts": {
     "start": "./bin/gateway start",
