@@ -1,5 +1,6 @@
 var gateway = require(__dirname+'/../');
 var request = require('request');
+var queryString = require('qs');
 
 function getQueuedWithdrawal(fn){
   gateway.data.models.externalTransactions.find({
@@ -22,7 +23,9 @@ function getQueuedWithdrawal(fn){
 
 function loop() {
   getQueuedWithdrawal(function(err, withdrawal){
-    if (err || !withdrawal) { setTimeout(loop, 500); return; }
+    if (err || !withdrawal) {
+      return setTimeout(loop, 500);
+    }
 
     var url = gateway.config.get('WITHDRAWALS_CALLBACK_URL');
     postWithdrawalCallback(withdrawal, url, function(err){
@@ -41,12 +44,9 @@ function loop() {
 }
 
 function postWithdrawalCallback(withdrawal, url, fn) {
-  var body = withdrawal.toJSON();
-
   request({
     method: 'POST',
-    uri: url,
-    form: body
+    uri: url+'?'+queryString.stringify(withdrawal.toJSON())
   }, function(err, resp, body){
     if (err) {
       logger.error('withdrawal:failed', err);

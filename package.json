@@ -46,7 +46,8 @@
     "winston": "^0.7.3",
     "superagent": "^0.18.0",
     "winston-loggly": "^1.0.1",
-    "body-parser": "^1.6.3"
+    "body-parser": "^1.6.3",
+    "qs": "^1.2.1"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "^0.10.0",
