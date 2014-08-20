@@ -230,7 +230,7 @@ program
   .action(cli.getTrustLines);
 
 program
-  .command('set_last_payment_hash <hash>')
+  .command('set_last_payment_hash')
   .description('set the last encountered payment hash for incoming processing.')
   .action(cli.setLastPaymentHash);
 
