@@ -36,7 +36,7 @@
     "ripple-gateway-webapp-example": "1.7.0",
     "ripple-lib": "",
     "ripple-wallet": "1.0.0",
-    "ripple-rest-client": "1.9.4",
+    "ripple-rest-client": "1.9.5",
     "underscore-node": "0.1.2",
     "sequelize": "^1.7.0",
     "sinon": "^1.9.1",
