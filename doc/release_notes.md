@@ -1,3 +1,14 @@
+##09/02/2014
+
+###3.24.2
+
+### Fixed Bugs
+- Add empty log files for production, staging, and development
+- Enable HTTP_SERVER option to toggle server process
+
+### Added Features:
+- Use api key as either user or password in basic auth.
+
 ##08/11/2014
 
 ###3.24.1
